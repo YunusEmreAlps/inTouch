@@ -269,7 +269,7 @@ class _RegisterFormState extends State<RegisterForm> {
         return null;
       },
       decoration: InputDecoration(
-        labelText: AppStrings.PASSWORD,
+        labelText: AppStrings.CONFIRM_PASSWORD,
         labelStyle: TextStyle(
           color: AppColors.colorSecondary,
         ),

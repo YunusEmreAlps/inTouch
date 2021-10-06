@@ -2,15 +2,18 @@
 
 Connecting you from around the world.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+<!-- SCREENSHOTS -->
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+Splash Screen              | Onboarding Screen             | Onboarding Screen               | Onboarding Screen
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/1.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/2.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/3.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/4.png?raw=true)|
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Login Screen            | Login Validation             | Register Screen               | Register Validation
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/5.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/6.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/7.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/8.png?raw=true)|
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Login Success              |  Home Page (Members)              | Location Tracker               | Location History
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/9.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/10.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/11.png?raw=true)|![](https://github.com/YunusEmreAlps/inTouch/tree/master/intouch/ss/12.png?raw=true)|
