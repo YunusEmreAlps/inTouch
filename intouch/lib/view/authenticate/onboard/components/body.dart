@@ -72,7 +72,7 @@ class _BodyState extends State<Body> {
                       buttonColor: AppColors.colorPrimary,
                       textColor: Colors.white,
                       press: () {
-                        Navigator.popAndPushNamed(context, NavigationConstants.HOME);
+                        Navigator.popAndPushNamed(context, NavigationConstants.LOGIN);
                       } ,
                     ),
                     Spacer(),

@@ -1,6 +1,9 @@
 // App
 export './app/app_constants.dart';
 
+// Border
+export './border/app_borders.dart';
+
 // Color
 export './color/app_colors.dart';
 export './color/app_gradients.dart';

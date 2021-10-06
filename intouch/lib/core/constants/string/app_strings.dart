@@ -8,6 +8,8 @@ class AppStrings {
   static final String FOLLOW_US = AppLocalizations.getString("Follow Us");
   static final String JOIN_US = AppLocalizations.getString("Join Us");
   static final String JOIN_US_NOW = AppLocalizations.getString("Join Us Now");
+  static final String SIGN_IN = AppLocalizations.getString("Sign In");
+  static final String SIGN_UP = AppLocalizations.getString("Sign Up");
   static final String HISTORY = AppLocalizations.getString("History");
   static final String LOCATION = AppLocalizations.getString("Location");
   static final String LOG_OUT = AppLocalizations.getString("Log Out");
@@ -27,6 +29,7 @@ class AppStrings {
   static final String CONFIRM = AppLocalizations.getString("Confirm?");
   static final String SHOW_ALERT = AppLocalizations.getString("Show Alert Dialog");
   static final String SHOW_BOTTOM_SHEET = AppLocalizations.getString("Show Bottom Sheet");
+  static final String WELCOME_BACK = AppLocalizations.getString("Welcome Back");
 
   // Buttons
   static final String INTOUCH_NETWORK = AppLocalizations.getString("inTouch Network");
@@ -54,6 +57,7 @@ class AppStrings {
   static final String ACCEPT_TERMS = AppLocalizations.getString("I accept the policy and terms");
   static final String DONT_HAVE_AN_ACCOUNT = AppLocalizations.getString("Don't have an account? ");
   static final String ALREADY_HAVE_AN_ACCOUNT = AppLocalizations.getString("Already have an account? ");
+  static final String LOGIN_GUIDE = AppLocalizations.getString("Sign in with your username and password");
 
   // About App
   static const String FONT_FAMILY = "GILROY";
@@ -89,6 +93,15 @@ class AppStrings {
   static const String ONBOARDING_TITLE_3 = "Stay connected with your \nfamily and friends all the time";
 
   // Error Messages
+  static final String EMAIL_NULL_ERROR = "Please Enter your email";
+  static final String INVALID_EMAIL_ERROR = "Please Enter Valid Email";
+  static final String NULL_PASSWORD_ERROR = "Please Enter your password";
+  static final String SHORT_PASSWORD_ERROR = "Password is too short";
+  static final String MATCH_PASSWORD_ERROR = "Passwords don\'t match";
+  static final String NAME_NULL_ERROR = "Please Enter your name";
+  static final String INVALID_NAME_ERROR = "Name must be a-z and A-Z";
+  static final String PHONE_NUMBER_NULL_ERRORr = "Please Enter your phone number";
+  static final String ADDRESS_NULL_ERROR = "Please Enter your address";
   static final String CALL_ERROR = AppLocalizations.getString('Call failed');
   static final String MAIL_ERROR = AppLocalizations.getString('E-Mail not delivered');
   static final String WEB_ERROR = AppLocalizations.getString('Could not open website!');

@@ -82,7 +82,7 @@ class AppBottomSheetWidgets {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SvgPicture.asset(AppImages.svgMessage, height: 80),
+                SvgPicture.asset(AppImages.iconMessage, height: 80),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(32, 30, 32, 24),
                   // Feel Free to Contribute!
@@ -139,19 +139,19 @@ class AppBottomSheetWidgets {
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: AppBottomSheetWidgets.socialRow(AppStrings.JOIN_US_NOW,
-                  AppStrings.googleFormLink, AppImages.svgJoin),
+                  AppStrings.googleFormLink, AppImages.iconJoin),
             ),
             // Discord
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: AppBottomSheetWidgets.socialRow(
-                  'Discord', AppStrings.DISCORD_LINK, AppImages.svgDiscord),
+                  'Discord', AppStrings.DISCORD_LINK, AppImages.iconDiscord),
             ),
             // GitHub
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: AppBottomSheetWidgets.socialRow(
-                  'GitHub', AppStrings.GITHUB_LINK, AppImages.svgGitHub),
+                  'GitHub', AppStrings.GITHUB_LINK, AppImages.iconGitHub),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 22),
@@ -163,19 +163,19 @@ class AppBottomSheetWidgets {
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: AppBottomSheetWidgets.socialRow(
-                  'Twitter', AppStrings.TWITTER_LINK, AppImages.svgTwitter),
+                  'Twitter', AppStrings.TWITTER_LINK, AppImages.iconTwitter),
             ),
             // Youtube
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: AppBottomSheetWidgets.socialRow(
-                  'YouTube', AppStrings.YOUTUBE_LINK, AppImages.svgYoutube),
+                  'YouTube', AppStrings.YOUTUBE_LINK, AppImages.iconYoutube),
             ),
             // LinkedIn
             Padding(
               padding: const EdgeInsets.only(left: 32),
               child: AppBottomSheetWidgets.socialRow('LinkedIn',
-                  AppStrings.LINKEDIN_LINK, AppImages.svgLinkedin),
+                  AppStrings.LINKEDIN_LINK, AppImages.iconLinkedin),
             ),
             // Website Button
             Padding(
