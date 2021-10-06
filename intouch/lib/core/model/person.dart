@@ -1,9 +1,6 @@
 // Dart imports:
 import 'dart:convert';
 
-// Project imports:
-import 'package:intouch/enums.dart';
-
 List<Person> personFromJson(String str) =>
     List<Person>.from(json.decode(str).map((x) => Person.fromJson(x)));
 
@@ -19,7 +16,6 @@ class Person {
     this.linkedin,
     this.interests,
     this.goals,
-    this.mentor,
     this.slug,
     this.avatar,
     this.displayInterests,
@@ -35,7 +31,6 @@ class Person {
   String linkedin;
   String interests;
   String goals;
-  Mentor mentor;
   String slug;
   String avatar;
   String displayInterests;
@@ -52,7 +47,6 @@ class Person {
       linkedin: json["linkedin"],
       interests: json["interests"],
       goals: json["goals"],
-      mentor: mentorValues.map[json["mentor"]],
       slug: json["slug"],
       avatar: json["avatar"],
       displayInterests: json["displayInterests"],
@@ -70,7 +64,6 @@ class Person {
         "linkedin": linkedin,
         "interests": interests,
         "goals": goals,
-        "mentor": mentorValues.reverse[mentor],
         "slug": slug,
         "avatar": avatar,
         "displayInterests": displayInterests,
@@ -78,21 +71,4 @@ class Person {
         "mail": mail == null ? null : mail,
         "stackoverflow": stackoverflow == null ? null : stackoverflow,
     };
-}
-
-final mentorValues = EnumValues(
-    {"Both": Mentor.BOTH, "Mentee": Mentor.MENTEE, "Mentor": Mentor.MENTOR});
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
-    return reverseMap;
-  }
 }

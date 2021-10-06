@@ -13,7 +13,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/app_widget.dart';
 import 'package:intouch/core/init/size_config.dart';
-import 'package:intouch/core/model/event.dart';
 
 class LocationPageBody extends StatefulWidget {
   @override
@@ -21,8 +20,6 @@ class LocationPageBody extends StatefulWidget {
 }
 
 class _LocationPageBodyState extends State<LocationPageBody> {
-  List<EventElement> data;
-
   bool isKeyboardVisible;
 
   @override
