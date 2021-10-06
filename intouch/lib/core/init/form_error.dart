@@ -10,7 +10,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intouch/core/constants/core.dart';
 import 'size_config.dart';
 
-// Form Errors
 class FormError extends StatelessWidget {
   const FormError({
     Key key,
@@ -27,15 +26,9 @@ class FormError extends StatelessWidget {
     );
   }
 
-  Row formErrorText({String error}) {
+  Row formErrorText({@required String error}) {
     return Row(
-      // mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
-      // crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
       children: [
-        // Must be center
-        SizedBox(
-          width: getProportionateScreenWidth(75),
-        ),
         SvgPicture.asset(
           AppImages.iconError,
           height: getProportionateScreenWidth(14),

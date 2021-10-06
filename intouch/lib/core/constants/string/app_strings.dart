@@ -65,7 +65,7 @@ class AppStrings {
   static const String APP_NAME = "inTouch";
   static final String APP_DESCRIPTION = "Connecting You From Around The World";
   static final String APP_LONG_DESCRIPTION = "";
-  static final String APP_LONGRICH_DESCRIPTION = "How To Be A 🌟GREAT🌟 Mentee?";
+  static final String APP_LONGRICH_DESCRIPTION = "Possible";
   static const String PHONE_NUMBER = "We Don\'t Know Yet";
   static const String DEV_EMAIL = "yunus192alpu@gmail.com";
 
@@ -100,8 +100,10 @@ class AppStrings {
   static final String MATCH_PASSWORD_ERROR = "Passwords don\'t match";
   static final String NAME_NULL_ERROR = "Please Enter your name";
   static final String INVALID_NAME_ERROR = "Name must be a-z and A-Z";
+  static final String SHORT_USERNAME_ERROR = "Username is too short";
   static final String PHONE_NUMBER_NULL_ERRORr = "Please Enter your phone number";
   static final String ADDRESS_NULL_ERROR = "Please Enter your address";
+   static final String PASSWORD_MISMATCH = "Password mismatch";
   static final String CALL_ERROR = AppLocalizations.getString('Call failed');
   static final String MAIL_ERROR = AppLocalizations.getString('E-Mail not delivered');
   static final String WEB_ERROR = AppLocalizations.getString('Could not open website!');

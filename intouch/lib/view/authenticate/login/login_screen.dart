@@ -7,7 +7,6 @@ import 'package:intouch/core/init/size_config.dart';
 import 'package:intouch/core/navigation/navigation_constants.dart';
 import 'components/body.dart';
 
-
 // Sign In/Login Screen
 class LoginScreen extends StatelessWidget {
   @override
@@ -19,7 +18,7 @@ class LoginScreen extends StatelessWidget {
         title: Text(AppStrings.SIGN_IN),
       ),
       body: Body(),
-      // Sticky or Fixed Layout
+      // Sticky Layout
       // Don't have an account
       bottomNavigationBar: Padding(
         padding: EdgeInsets.all(15.0), // 8
