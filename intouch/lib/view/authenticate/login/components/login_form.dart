@@ -10,8 +10,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/form_error.dart';
 import 'package:intouch/core/init/size_config.dart';
-import 'package:intouch/core/navigation/navigation_constants.dart';
 import 'package:intouch/widget/default_button.dart';
+import 'package:intouch/core/service/user_operations.dart';
+import 'package:intouch/core/navigation/navigation_constants.dart';
 
 // Components
 
@@ -27,13 +28,15 @@ class _LoginFormState extends State<LoginForm> {
   // Variables
   String username;
   String password;
+  bool isLoading = false;
   bool rememberMe = false;
   bool _showPassword = false;
   String pattern = r'(^[a-zA-Z ]*$)';
   final List<String> formErrors = [];
   var _controllerusername = TextEditingController();
   var _controllerpassword = TextEditingController();
-  
+
+  UserOperations userOperations = new UserOperations();  
 
   // Add Error
   void addError(String error) {
@@ -95,10 +98,10 @@ class _LoginFormState extends State<LoginForm> {
                   (formErrors.isEmpty == true)) {
                 _formKey.currentState.save();
                 // Access to Login success page
-                Navigator.popAndPushNamed(
-                  context,
-                  NavigationConstants.LOGIN_SUCCESS
-                );
+                setState(() {
+                  isLoading = true;
+                });
+                _loginOperation(username, password);
               }
             },
           ),
@@ -252,6 +255,30 @@ class _LoginFormState extends State<LoginForm> {
         ),
       ),
     );
+  }
+
+  void _loginOperation(String username, String password) {
+    if (_formKey.currentState.validate()) {
+      setState(() {
+        isLoading = true;
+      });
+      userOperations.loginUser(username, password).then((value) => {
+        print(value),
+        if (value.length >= 1)
+        {
+          Navigator.popAndPushNamed(
+            context,
+            NavigationConstants.LOGIN_SUCCESS
+          )
+        }
+        else
+          {showAlertDialog(context)}
+        });
+    }else{
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 
   // Show Alert (Sign In Failed)
