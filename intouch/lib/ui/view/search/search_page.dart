@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:intouch/core/init/fade_animation.dart';
-import 'package:intouch/widget/searchpage/history_body_list.dart';
-import 'package:intouch/widget/searchpage/vowels.dart';
+import 'package:intouch/ui/widget/searchpage/history_body_list.dart';
+import 'package:intouch/ui/widget/searchpage/vowels.dart';
 
 class SearchPage extends StatefulWidget {
   SearchPage({Key key}) : super(key: key);

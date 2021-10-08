@@ -1,40 +1,44 @@
+// Libraries
+
 // Flutter imports:
 import 'package:flutter/material.dart';
 
 // Package imports:
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 // Project imports:
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/form_error.dart';
 import 'package:intouch/core/init/size_config.dart';
+import 'package:intouch/ui/widget/default_button.dart';
+import 'package:intouch/core/service/user_operations.dart';
 import 'package:intouch/core/navigation/navigation_constants.dart';
-import 'package:intouch/widget/default_button.dart';
 
-// Sin Up Form
-class RegisterForm extends StatefulWidget {
+// Components
+
+// Sign In/Login Form
+class LoginForm extends StatefulWidget {
   @override
-  _RegisterFormState createState() => _RegisterFormState();
+  _LoginFormState createState() => _LoginFormState();
 }
 
-class _RegisterFormState extends State<RegisterForm> {
+class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>(); // control
 
   // Variables
+  var token;
   String username;
   String password;
-  String comfirmPassword;
+  bool isLoading = false;
   bool rememberMe = false;
   bool _showPassword = false;
-  bool _showComfirmPassword = false;
   String pattern = r'(^[a-zA-Z ]*$)';
+  final List<String> formErrors = [];
   var _controllerusername = TextEditingController();
   var _controllerpassword = TextEditingController();
-  var _controllercomfirmpassword = TextEditingController();
-  
 
-  // Error (Multiple Error)
-  final List<String> formErrors = [];
+  UserOperations userOperations;
 
   // Add Error
   void addError(String error) {
@@ -59,22 +63,36 @@ class _RegisterFormState extends State<RegisterForm> {
     return Form(
       key: _formKey,
       child: Column(
-        children: [
-          // Full Name
+        children: <Widget>[
+          // Username
           buildUsernameFormField(),
+          // Sizedbox for Responsive Design
           SizedBox(height: getProportionateScreenHeight(15)),
-          // Password 
+          // Password
           buildPasswordField(),
-          SizedBox(height: getProportionateScreenHeight(15)),
-          // Comfirm Password
-          buildComfirmPasswordField(),
-          SizedBox(height: getProportionateScreenHeight(30)),
+          SizedBox(height: getProportionateScreenHeight(5)),
 
+          // Remember Me checkbox (?) & Forgot Password
+          Row(
+            children: [
+              Checkbox(
+                value: rememberMe,
+                activeColor: AppColors.colorPrimary,
+                onChanged: (value) {
+                  setState(() {
+                    rememberMe = value;
+                  });
+                },
+              ),
+              Text("Remember me"),
+              Spacer(),
+            ],
+          ),
 
-          // Sign up button
+          // Sign in button
           SizedBox(height: getProportionateScreenHeight(30)),
           DefaultButton(
-            text: AppStrings.SIGN_UP,
+            text: AppStrings.SIGN_IN,
             buttonColor: AppColors.colorPrimary,
             textColor: Colors.white,
             press: () {
@@ -82,7 +100,13 @@ class _RegisterFormState extends State<RegisterForm> {
                   (formErrors.isEmpty == true)) {
                 _formKey.currentState.save();
                 // Access to Login success page
-                Navigator.pushNamed(context, NavigationConstants.LOGIN);
+                UserOperations().login(username, password).then((val) {
+                  if (val.data['success']) {
+                    token = val.data['token'];
+                    Navigator.popAndPushNamed(
+                        context, NavigationConstants.LOGIN_SUCCESS);
+                  }
+                });
               }
             },
           ),
@@ -90,14 +114,11 @@ class _RegisterFormState extends State<RegisterForm> {
           // Form Error
           SizedBox(height: getProportionateScreenHeight(15)),
           FormError(errors: formErrors),
-
         ],
       ),
     );
   }
 
-
-  // Username TextField
   // Username TextField
   TextFormField buildUsernameFormField() {
     return TextFormField(
@@ -108,10 +129,9 @@ class _RegisterFormState extends State<RegisterForm> {
         RegExp regExp = new RegExp(pattern);
         if (value.isEmpty) {
           removeError(AppStrings.NAME_NULL_ERROR);
-        } else if (value.length < 8) {
+        } else if (value.length >= 4) {
           removeError(AppStrings.SHORT_USERNAME_ERROR);
-        }
-        else if (!regExp.hasMatch(value)) {
+        } else if (!regExp.hasMatch(value)) {
           removeError(AppStrings.INVALID_NAME_ERROR);
         }
         return null;
@@ -121,11 +141,10 @@ class _RegisterFormState extends State<RegisterForm> {
         if (value.isEmpty) {
           addError(AppStrings.NAME_NULL_ERROR);
           return "";
-        } else if (value.length < 8) {
+        } else if (value.length < 4) {
           addError(AppStrings.SHORT_USERNAME_ERROR);
           return "";
-        }
-        else if (!regExp.hasMatch(value)) {
+        } else if (!regExp.hasMatch(value)) {
           addError(AppStrings.INVALID_NAME_ERROR);
           return "";
         }
@@ -180,16 +199,16 @@ class _RegisterFormState extends State<RegisterForm> {
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(AppStrings.NULL_PASSWORD_ERROR);
-        } else if (value.isNotEmpty && password == comfirmPassword) {
-          removeError(AppStrings.PASSWORD_MISMATCH);
+        } else if (value.length >= 4) {
+          removeError(AppStrings.SHORT_PASSWORD_ERROR);
         }
-        password = value;
+        return null;
       },
       validator: (value) {
         if (value.isEmpty) {
           addError(AppStrings.NULL_PASSWORD_ERROR);
           return "";
-        } else if (value.length < 8) {
+        } else if (value.length < 4) {
           addError(AppStrings.SHORT_PASSWORD_ERROR);
           return "";
         }
@@ -241,81 +260,9 @@ class _RegisterFormState extends State<RegisterForm> {
     );
   }
 
-  // Comfirm Password TextField
-  TextFormField buildComfirmPasswordField() {
-    return TextFormField(
-      controller: _controllercomfirmpassword,
-      cursorColor: AppColors.colorPrimary,
-      obscureText: !_showComfirmPassword,
-      enableSuggestions: false,
-      autocorrect: false,
-      onSaved: (newValue) => comfirmPassword = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(AppStrings.NULL_PASSWORD_ERROR);
-        } else if (value.isNotEmpty && password == comfirmPassword) {
-          removeError(AppStrings.PASSWORD_MISMATCH);
-        }
-        comfirmPassword = value;
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          addError(AppStrings.NULL_PASSWORD_ERROR);
-          return "";
-        } else if ((password != value)) {
-          addError(AppStrings.PASSWORD_MISMATCH);
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
-        labelText: AppStrings.CONFIRM_PASSWORD,
-        labelStyle: TextStyle(
-          color: AppColors.colorSecondary,
-        ),
-        //floatingLabelBehavior: FloatingLabelBehavior.always,
-        errorStyle: TextStyle(height: 0),
-        border: outlineInputBorder(),
-        enabledBorder: outlineInputBorder(),
-        focusedBorder: outlineInputBorder(),
-
-        contentPadding: EdgeInsets.symmetric(
-            horizontal: getProportionateScreenWidth(30),
-            vertical: getProportionateScreenWidth(9)),
-
-        // Show Password
-        suffixIcon: _controllercomfirmpassword.text.isEmpty
-            ? null
-            : GestureDetector(
-                onTap: () {
-                  setState(() {
-                    _showComfirmPassword = !_showComfirmPassword;
-                  });
-                },
-                child: Icon(
-                  _showComfirmPassword ? Icons.visibility : Icons.visibility_off,
-                ),
-              ),
-
-        // Icon
-        prefixIcon: Padding(
-          padding: EdgeInsets.fromLTRB(
-            getProportionateScreenWidth(25),
-            getProportionateScreenWidth(20),
-            getProportionateScreenWidth(25),
-            getProportionateScreenWidth(20),
-          ),
-          child: SvgPicture.asset(
-            AppImages.iconLock,
-            height: getProportionateScreenWidth(18),
-          ),
-        ),
-      ),
-    );
-  }
-
-  // Show Alert (Sign Up Failed)
+  // Show Alert (Sign In Failed)
   showAlertDialog(BuildContext context) {
+    // set up the buttons
     Widget cancelButton = FlatButton(
       child: Text(
         AppStrings.CANCEL,

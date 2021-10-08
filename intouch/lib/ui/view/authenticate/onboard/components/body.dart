@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/size_config.dart';
 import 'package:intouch/core/navigation/navigation_constants.dart';
-import 'package:intouch/widget/default_button.dart';
+import 'package:intouch/ui/widget/default_button.dart';
 import 'onboard_content.dart';
 
 // Components

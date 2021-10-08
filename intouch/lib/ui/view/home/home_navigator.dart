@@ -7,9 +7,9 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 // Project imports:
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/app_localizations.dart';
-import 'package:intouch/view/home/history_page/history_page.dart';
-import 'package:intouch/view/home/home_page.dart';
-import 'package:intouch/view/home/location_page/location_page.dart';
+import 'package:intouch/ui/view/home/history_page/history_page.dart';
+import 'package:intouch/ui/view/home/home_page.dart';
+import 'package:intouch/ui/view/home/location_page/location_page.dart';
 
 class HomeNavigator extends StatefulWidget {
   @override

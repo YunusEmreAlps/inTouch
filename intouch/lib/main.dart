@@ -10,12 +10,12 @@ import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/app_localizations.dart';
 import 'package:intouch/core/init/theme.dart';
 import 'package:intouch/core/navigation/navigation_constants.dart';
-import 'package:intouch/view/authenticate/login/login_screen.dart';
-import 'package:intouch/view/authenticate/login_success/login_success_screen.dart';
-import 'package:intouch/view/authenticate/onboard/onboard_screen.dart';
-import 'package:intouch/view/authenticate/register/register_screen.dart';
-import 'package:intouch/view/authenticate/splash/splashscreen.dart';
-import 'package:intouch/view/home/home_navigator.dart';
+import 'package:intouch/ui/view/authenticate/login/login_screen.dart';
+import 'package:intouch/ui/view/authenticate/login_success/login_success_screen.dart';
+import 'package:intouch/ui/view/authenticate/onboard/onboard_screen.dart';
+import 'package:intouch/ui/view/authenticate/register/register_screen.dart';
+import 'package:intouch/ui/view/authenticate/splash/splashscreen.dart';
+import 'package:intouch/ui/view/home/home_navigator.dart';
 
 void main() => runApp(InTouch());
 

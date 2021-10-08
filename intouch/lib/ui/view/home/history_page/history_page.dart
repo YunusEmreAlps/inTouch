@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:intouch/core/constants/core.dart';
-import 'package:intouch/view/home/history_page/history_page_body.dart';
+import 'package:intouch/ui/view/home/history_page/history_page_body.dart';
 
 class HistoryPage extends StatefulWidget {
   @override

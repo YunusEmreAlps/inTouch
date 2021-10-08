@@ -7,11 +7,11 @@ import 'package:flutter/services.dart';
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/app_widget.dart';
 import 'package:intouch/core/init/system_overlay.dart';
-import 'package:intouch/view/search/search_page.dart';
-import 'package:intouch/widget/homepage/bottom_sheet.dart';
-import 'package:intouch/widget/homepage/find_mentor_cover.dart';
-import 'package:intouch/widget/homepage/home_page_list_view.dart';
-import 'package:intouch/widget/homepage/search_box.dart';
+import 'package:intouch/ui/view/search/search_page.dart';
+import 'package:intouch/ui/widget/homepage/bottom_sheet.dart';
+import 'package:intouch/ui/widget/homepage/find_mentor_cover.dart';
+import 'package:intouch/ui/widget/homepage/home_page_list_view.dart';
+import 'package:intouch/ui/widget/homepage/search_box.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
