@@ -64,12 +64,15 @@ class UserOperations with DioMixin implements Dio {
           fontSize: 16.0);
     }
   }
-
   // Add User
   register(username, password) async {
       return await dio.post('https://intouch-server.herokuapp.com/adduser',
           data: {'username': username, 'password': password},
           options: Options(contentType: Headers.formUrlEncodedContentType));
   }
-
+  // Get Info
+  getinfo(token) async {
+    dio.options.headers['Authorization'] = 'Bearer $token';
+    return await dio.get('https://intouch-server.herokuapp.com/getinfo');
+  }
 }

@@ -3,10 +3,8 @@ import 'dart:convert';
 import 'dart:ui' as ui;
 
 // Flutter imports:
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intouch/core/model/user_location.dart';
-import 'package:location/location.dart';
 import 'package:provider/provider.dart';
 import 'package:intouch/core/service/location_service.dart';
 
@@ -15,7 +13,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 // Project imports:
 import 'package:intouch/core/constants/core.dart';
-import 'package:intouch/core/init/app_widget.dart';
 import 'package:intouch/core/init/size_config.dart';
 
 class LocationPageBody extends StatefulWidget {
@@ -25,7 +22,6 @@ class LocationPageBody extends StatefulWidget {
 
 class _LocationPageBodyState extends State<LocationPageBody> {
   bool isKeyboardVisible;
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -59,12 +55,14 @@ class _LocationPageBodyState extends State<LocationPageBody> {
   }
 }
 
+// Get User Location
 class MyLocation extends StatelessWidget {
+  bool locationPermisson = LocationService().locationStream.isBroadcast;
   @override
   Widget build(BuildContext context) {
     return StreamProvider<UserLocation>(
-        create: (context) => LocationService().locationStream,
-        child: LocationView(),
+      create: (context) => LocationService().locationStream,
+      child: ((locationPermisson) ? LocationView() : Text("Permisson Denied")),
   );
   }
 }
@@ -78,8 +76,7 @@ class LocationView extends StatelessWidget {
     print("Location: Lat:${userLocation.latitude}, Long: ${userLocation.longitude}");
     return Scaffold(
       body: Center(
-        child: Text(
-            'Location: Lat:${userLocation.latitude}, Long: ${userLocation.longitude}'),
+        child: Text('Location: Lat:${userLocation.latitude}, Long: ${userLocation.longitude}',  style: TextStyle(color: AppColors.colorHeading, fontWeight: FontWeight.w500)),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:intouch/core/service/user_operations.dart';
 import 'package:location/location.dart';
 import 'package:intouch/core/model/user_location.dart';
 
