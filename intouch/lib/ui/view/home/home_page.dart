@@ -12,6 +12,7 @@ import 'package:intouch/ui/widget/homepage/bottom_sheet.dart';
 import 'package:intouch/ui/widget/homepage/find_mentor_cover.dart';
 import 'package:intouch/ui/widget/homepage/home_page_list_view.dart';
 import 'package:intouch/ui/widget/homepage/search_box.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);

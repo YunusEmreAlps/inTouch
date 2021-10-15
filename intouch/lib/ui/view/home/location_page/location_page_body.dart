@@ -5,6 +5,10 @@ import 'dart:ui' as ui;
 // Flutter imports:
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:intouch/core/model/user_location.dart';
+import 'package:location/location.dart';
+import 'package:provider/provider.dart';
+import 'package:intouch/core/service/location_service.dart';
 
 // Package imports:
 import 'package:url_launcher/url_launcher.dart';
@@ -34,22 +38,14 @@ class _LocationPageBodyState extends State<LocationPageBody> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  /*Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Material(
-                      borderRadius: BorderRadius.circular(8),
-                      shadowColor: Colors.black38,
-                      elevation: 4,
-                      child: AppWidget.getSearchBox(isKeyboardVisible, context,
-                          AppStrings.searchEventText),
-                    ),
-                  ),*/
                   SingleChildScrollView(
                     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 25),
                     child: SafeArea(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[],
+                        children: <Widget>[
+                          MyLocation(),
+                        ],
                       ),
                     ),
                   ),
@@ -58,6 +54,32 @@ class _LocationPageBodyState extends State<LocationPageBody> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class MyLocation extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamProvider<UserLocation>(
+        create: (context) => LocationService().locationStream,
+        child: LocationView(),
+  );
+  }
+}
+
+
+class LocationView extends StatelessWidget {
+  const LocationView({Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    var userLocation = Provider.of<UserLocation>(context);
+    print("Location: Lat:${userLocation.latitude}, Long: ${userLocation.longitude}");
+    return Scaffold(
+      body: Center(
+        child: Text(
+            'Location: Lat:${userLocation.latitude}, Long: ${userLocation.longitude}'),
       ),
     );
   }

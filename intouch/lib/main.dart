@@ -9,6 +9,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intouch/core/constants/core.dart';
 import 'package:intouch/core/init/app_localizations.dart';
 import 'package:intouch/core/init/theme.dart';
+import 'package:intouch/core/model/user_location.dart';
 import 'package:intouch/core/navigation/navigation_constants.dart';
 import 'package:intouch/ui/view/authenticate/login/login_screen.dart';
 import 'package:intouch/ui/view/authenticate/login_success/login_success_screen.dart';
@@ -16,6 +17,9 @@ import 'package:intouch/ui/view/authenticate/onboard/onboard_screen.dart';
 import 'package:intouch/ui/view/authenticate/register/register_screen.dart';
 import 'package:intouch/ui/view/authenticate/splash/splashscreen.dart';
 import 'package:intouch/ui/view/home/home_navigator.dart';
+import 'package:provider/provider.dart';
+
+import 'core/service/location_service.dart';
 
 void main() => runApp(InTouch());
 
@@ -26,7 +30,7 @@ class InTouch extends StatefulWidget {
 
 class _InTouchState extends State<InTouch> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent),
     );
@@ -35,6 +39,7 @@ class _InTouchState extends State<InTouch> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    
     return MaterialApp(
       title: AppStrings.APP_NAME,
       debugShowCheckedModeBanner: false,
