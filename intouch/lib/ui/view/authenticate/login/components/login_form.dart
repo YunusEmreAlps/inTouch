@@ -14,6 +14,7 @@ import 'package:intouch/core/init/size_config.dart';
 import 'package:intouch/ui/widget/default_button.dart';
 import 'package:intouch/core/service/user_operations.dart';
 import 'package:intouch/core/navigation/navigation_constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Components
 
@@ -39,6 +40,7 @@ class _LoginFormState extends State<LoginForm> {
   var _controllerpassword = TextEditingController();
 
   UserOperations userOperations;
+
 
   // Add Error
   void addError(String error) {

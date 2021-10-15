@@ -75,4 +75,11 @@ class UserOperations with DioMixin implements Dio {
     dio.options.headers['Authorization'] = 'Bearer $token';
     return await dio.get('https://intouch-server.herokuapp.com/getinfo');
   }
+
+  // Post Location
+  postlocation(username, latitude, longitude) async {
+    return await dio.post('https://intouch-server.herokuapp.com/addlocation',
+      data: {"username": username, 'latitude': latitude, 'longitude': longitude},
+      options: Options(contentType: Headers.formUrlEncodedContentType));
+  }
 }
